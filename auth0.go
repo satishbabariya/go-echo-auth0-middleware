@@ -73,7 +73,7 @@ func Auth0WithConfig(config Auth0Config) echo.MiddlewareFunc {
 		provider.KeyFunc,
 		validator.SignatureAlgorithm(config.SignatureAlgorithm),
 		issuerURL.String(),
-		[]string{"<your api identifier>"},
+		config.Audience,
 	)
 	if err != nil {
 		log.Fatalf("failed to set up the validator: %v", err)
